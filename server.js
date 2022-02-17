@@ -5,7 +5,7 @@ let notes = require('./db/db.json');
 
 //Initiate server port
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -13,12 +13,12 @@ app.use(express.json());
 
 //GET request for index 
 app.get('/', (req, res) =>
-    res.sendFile(path.join(__dirname, "./public/index.html"))
+    res.sendFile(path.join(__dirname, "/public/index.html"))
 );
 
 //GET request for notes
 app.get('/notes', (req, res) =>
-    res.sendFile(path.join(__dirname, "./public/notes.html"))
+    res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 //GET request for saved notes
