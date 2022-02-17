@@ -26,7 +26,7 @@ Refer to [https://choosealicense.com/](https://choosealicense.com/).
 
 To install this application, please follow the steps below:
 
-- Heroku App: 
+- Heroku App: https://afternoon-mesa-01567.herokuapp.com/
 - Using express, this application will run on a localhost:3001 after initializing. To initialize, simply open the server.js file in the integrated terminal and input'node server.js'
 
 ## Usage
