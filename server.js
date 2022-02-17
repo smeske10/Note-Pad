@@ -23,19 +23,31 @@ app.get('/notes', (req, res) =>
 
 //GET request for saved notes
 app.get('/api/notes', (req, res) =>
-    res.json(notes);
+    res.json(notes)
 );
 
 // POST request for save note
 app.post('/api/notes', (req, res) => {
-    res.json(`${req.method} request received for New Note`);
-    req.body.id = Math.floor(Math.random()) * 100;
+    req.body.id = Math.floor(Math.random() * 1000);
     fs.writeFileSync('./db/db.json', JSON.stringify(notes));
     notes.push(req.body);
     res.json(notes);
 });
 
+// Delete request for notes
+app.delete('/api/notes/:id', (req, res) => {
+    let array = [];
+    for (let i = 0; i < notes.length; i++) {
+        if (req.params.id != notes[i].id) {
+            array.push(notes[i])
+        }
+    }
+    fs.writeFileSync('./db/db.json', JSON.stringify(array));
+    notes = array;
+    res.json(notes);
+});
+
 //Initiate server port
 app.listen(PORT, () =>
-    console.log(`Example app listening at http://localhost:${PORT}`)
+    console.log(`App listening at http://localhost:${PORT}`)
 );
